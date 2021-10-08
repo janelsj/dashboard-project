@@ -1,9 +1,9 @@
 import React from 'react';
-import BitCoin from './BitCoin-container';
-import Gold from './Gold-container';
-import SnP500 from './SnP500-container';
+import BitCoin from '../components/BitCoin';
+import Gold from '../components/Gold';
+import SnP500 from '../components/SnP500';
 
-class PresentationalComponent extends React.Component {
+class DashboardScreen extends React.Component {
     constructor(){
         super();
     }
@@ -18,4 +18,4 @@ class PresentationalComponent extends React.Component {
 
 }
 
-export default PresentationalComponent;
+export default DashboardScreen;
