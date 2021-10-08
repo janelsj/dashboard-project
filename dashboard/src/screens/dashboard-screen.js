@@ -12,7 +12,7 @@ class DashboardScreen extends React.Component {
         return(<div id="parent">
             <div id="gold"><Gold/></div>
             <div id="snp500"><SnP500/></div>
-            <div id="bitcoin"><BitCoin/></div>
+            <BitCoin/>
         </div>)
     }
 
