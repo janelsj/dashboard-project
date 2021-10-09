@@ -54,57 +54,13 @@ function BitCoin(){
         let yValuesArray = [];
         getBitCoinData().then(response => {
             for (let eachDate in response.data['Time Series (Digital Currency Daily)']){
-                console.log(response.data['Time Series (Digital Currency Daily)'][eachDate]['4a. close (SGD)']);
+                console.log(response.data['Time Series (Digital Currency Daily)'][eachDate][`4a. close (${market})`]);
                 xValuesArray.push(eachDate);
-                yValuesArray.push(response.data['Time Series (Digital Currency Daily)'][eachDate]['4a. close (SGD)'])
+                yValuesArray.push(response.data['Time Series (Digital Currency Daily)'][eachDate][`4a. close (${market})`]);
             }
             setXAxis(xValuesArray);
             setYAxis(yValuesArray);
         });
-
-            
-            
-            // const datesObj = response.data['Time Series (Digital Currency Daily)'];
-            // let datesArray = xAxis;
-            // Object.keys(datesObj).map(item => {
-            //    return datesArray.push(item);
-            // });
-            // array = datesArray.forEach(date => {
-            //     const trace1 = {
-            //         x: [...date],
-            //         y: [...response.data['Time Series (Digital Currency Daily)'][date]['4a. close (SGD)']],
-            //         mode: 'lines+markers',
-            //         name: `${response.data['Meta Data']['2. Digital Currency Code']}`+'/'+`${response.data['Meta Data']['4. Market Code']}`,
-            //       };
-                  
-            //     const data = [trace1];
-                  
-            //     const layout = {
-            //         title: `${response.data['Meta Data']['1. Information']}`+" "+`${response.data['Meta Data']['3. Digital Currency Name']}`+"/"+`${response.data['Meta Data']['5. Market Name']}`,
-            //         xaxis: {
-            //           title: 'Time'
-            //         },
-            //         yaxis: {
-            //           title: 'SGD'
-            //         }
-            //       };
-                  
-            //     Plotly.newPlot('bitcoinGraph', data, layout);
-
-
-
-        //     array = datesArray.map(date => {
-        //         // setXAxis(date);
-        //         // setYAxis(.response.data['Time Series (Digital Currency Daily)'][date]['4a. close (SGD)']);
-        //         return {[date]: response.data['Time Series (Digital Currency Daily)'][date]['4a. close (SGD)']}
-        //     })
-        //     setXAxis(datesArray);
-        //     for (let i=0; i<array.length; i++){
-        //         setYAxis(array[i][date])
-        //     }
-        //     console.log(xAxis, yAxis);
-        //     // return setDataArray(array);
-        // });
         return () => console.log("exit");
     },[xAxis, yAxis, market, symbol]);
 
@@ -125,7 +81,7 @@ function BitCoin(){
                 y: yAxis,
                 type: 'scatter',
                 mode: 'lines+markers',
-                marker: {color: 'red'},
+                marker: {color: 'blue'},
               },
             ]}
             layout={{width: 800, height: 600, title: `Time Series of ${symbol} (${market})`}}
