@@ -18,6 +18,7 @@
 
 #snp500, #gold, #bitcoin {
   border: 2px solid black;
+  text-align: center;
 }
 
 #snp500 {
