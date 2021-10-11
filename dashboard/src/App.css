@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   min-height: min-content;
-  height: 98vh;
   justify-content: center;
   align-items: center;
 }
@@ -18,6 +17,7 @@
 
 #snp500, #gold, #bitcoin {
   border: 2px solid black;
+  text-align: center;
 }
 
 #snp500 {
