@@ -1,4 +1,5 @@
 import axios from 'axios';
+
 const API = axios.create({
     baseURL: "https://alpha-vantage.p.rapidapi.com/query",
     headers: {
