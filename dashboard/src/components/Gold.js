@@ -15,23 +15,23 @@ function Gold() {
     useEffect (()=> {
         API.get('', {
             params: {
-                function: 'TIME_SERIES_DAILY_ADJUSTED',
+                function: 'TIME_SERIES_WEEKLY',
                 symbol: 'GLD',
                 datatype: 'json',
-                output_size: 'compact'
+                // output_size: 'compact'
               },
           })
           .then(function (response)
           {
             //   console.log(response);
-            //   console.log(response.data);
+              console.log(response.data);
 
               let xValuesFunction = [];
               let yValuesFunction = [];
 
-              for (let key in response.data['Time Series (Daily)']){
+              for (let key in response.data['Weekly Time Series']){
                   xValuesFunction.push(key);
-                  yValuesFunction.push(response.data['Time Series (Daily)'][key]['1. open']);
+                  yValuesFunction.push(response.data['Weekly Time Series'][key]['1. open']);
               }
             //   console.log(xValuesFunction);
             //   console.log(yValuesFunction);
