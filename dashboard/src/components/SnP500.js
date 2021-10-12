@@ -66,7 +66,7 @@ class SnP500 extends React.Component {
                 marker: {color: '#299617'},
               }
             ]}
-            layout={{width: 350, height: 300, title: `S&P 500<br><br> ${this.state.stockChartYValues[0]} USD`}}
+            layout={{width: 650, height: 600, title: `S&P 500<br><br> ${this.state.stockChartYValues[0]} USD`}}
           />
         </div>
       )

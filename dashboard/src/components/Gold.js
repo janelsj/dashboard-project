@@ -55,7 +55,7 @@ function Gold() {
             x: xValuesFunction,
             y: yValuesFunction,
             type: 'scatter',
-            mode: 'lines+markers',
+            mode: 'lines',
             marker: {color: '#d4af37'},
             },
         ]}
