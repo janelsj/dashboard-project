@@ -31,7 +31,7 @@ function Crypto(){
                     xValuesArray.push(eachDate);
                     yValuesArray.push(response.data['Time Series (Digital Currency Daily)'][eachDate][`4a. close (${market.split(",")[0]})`]);
                 }
-                setGraphValues({xAxis: xValuesArray, yAxis: yValuesArray});
+                setGraphValues({xAxis: xValuesArray.slice(0,146), yAxis: yValuesArray.slice(0,146)});
             }
         });
 
