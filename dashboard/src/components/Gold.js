@@ -1,6 +1,6 @@
 import API from './API';
 import React, {useEffect, useState} from 'react';
-// import Plot from 'react-plotly.js';
+import Plot from 'react-plotly.js';
 
 //  fetchGold() {
 //     API.get( '/owner')
@@ -49,19 +49,19 @@ function Gold() {
         <div>
             <h1>Gold Price</h1>
 
-            {/* <Plot
+            <Plot
             data={[
             {
             x: xValuesFunction,
             y: yValuesFunction,
             type: 'scatter',
             mode: 'lines+markers',
-            marker: {color: 'red'},
+            marker: {color: '#d4af37'},
             },
         ]}
-        layout={ {width: 320, height: 240, title: 'A Fancy Plot'} }
+        layout={ {width: 650, height: 600, title: 'Plot of Gold'} }
       />
-     */}
+    
         </div>
     </>)
 }
