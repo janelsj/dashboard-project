@@ -5,8 +5,10 @@ import DropdownListMaker from '../common_functions/DropdownListMaker';
 
 function Crypto(){
 
-    const [xAxis, setXAxis] = useState([]);
-    const [yAxis, setYAxis] = useState([]);
+    const [graphValues, setGraphValues] = useState({
+        xAxis: [],
+        yAxis: [],
+    });
     const [market, setMarket] = useState('SGD,Singapore Dollar');
     const [symbol, setSymbol] = useState('BTC,Bitcoin');
 
@@ -29,8 +31,7 @@ function Crypto(){
                     xValuesArray.push(eachDate);
                     yValuesArray.push(response.data['Time Series (Digital Currency Daily)'][eachDate][`4a. close (${market.split(",")[0]})`]);
                 }
-                setXAxis(xValuesArray);
-                setYAxis(yValuesArray);
+                setGraphValues({xAxis: xValuesArray, yAxis: yValuesArray});
             }
         });
 
@@ -42,17 +43,17 @@ function Crypto(){
         <h2>{'Digital & Crypto Currency'}</h2>
         <div className="selection">
             <label htmlFor="physicalCurrency">Choose physical currency:</label>
-            <select name="physicalCurrency" onChange={e => setMarket(e.target.options[e.target.selectedIndex].value)}>
+            <select name="physicalCurrency" value={market} onChange={e => setMarket(e.target.options[e.target.selectedIndex].value)}>
                 <DropdownListMaker filePathName='physical'/>
             </select>
             <label htmlFor="digitalCurrency">Choose digital currency:</label>
-            <select name="digitalCurrency" onChange={e => setSymbol(e.target.options[e.target.selectedIndex].value)}>
+            <select name="digitalCurrency" value={symbol} onChange={e => setSymbol(e.target.options[e.target.selectedIndex].value)}>
                 <DropdownListMaker filePathName='digital'/>
             </select> 
         </div>
         <Graph 
-            x={xAxis}
-            y={yAxis}
+             x={graphValues.xAxis}
+             y={graphValues.yAxis}
             color={'blue'}
             chartTitle={`Daily Time Series of ${symbol.split(",")[1]} valuation (in ${market.split(",")[1]})`}
         />
