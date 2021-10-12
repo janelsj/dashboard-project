@@ -1,5 +1,6 @@
 import API from './API';
-import  {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
+import Plot from 'react-plotly.js';
 
 //  fetchGold() {
 //     API.get( '/owner')
@@ -8,13 +9,13 @@ import  {useEffect} from 'react';
 // };
 
 function Gold() {
-    // const [posts, setPosts] = useState ([])
+    const [xValuesFunction, setXValuesFunction] = useState([])
+    const [yValuesFunction, setYValuesFunction] = useState([])
 
     useEffect (()=> {
         API.get('', {
             params: {
-                interval: '5min',
-                function: 'TIME_SERIES_INTRADAY',
+                function: 'TIME_SERIES_DAILY_ADJUSTED',
                 symbol: 'GLD',
                 datatype: 'json',
                 output_size: 'compact'
@@ -22,14 +23,44 @@ function Gold() {
           })
           .then(function (response)
           {
-              console.log(response);
+            //   console.log(response);
+            //   console.log(response.data);
+
+              let xValuesFunction = [];
+              let yValuesFunction = [];
+
+              for (let key in response.data['Time Series (Daily)']){
+                  xValuesFunction.push(key);
+                  yValuesFunction.push(response.data['Time Series (Daily)'][key]['1. open']);
+              }
+            //   console.log(xValuesFunction);
+            //   console.log(yValuesFunction);
+
+              setXValuesFunction(xValuesFunction);
+              setYValuesFunction(yValuesFunction);
           })
 
     }, []);
 
+    console.log(xValuesFunction);
+    console.log(yValuesFunction);
+
     return(<>
         <div>
             <h1>Gold Price</h1>
+
+            <Plot
+            data={[
+            {
+            x: xValuesFunction,
+            y: yValuesFunction,
+            type: 'scatter',
+            mode: 'lines',
+            marker: {color: '#d4af37'},
+            },
+        ]}
+        layout={ {width: 650, height: 600, title: 'Plot of Gold'} }
+      />
     
         </div>
     </>)
