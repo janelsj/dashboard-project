@@ -15,26 +15,35 @@
   width: 90%;
 }
 
-#snp500, #gold, #bitcoin {
+#snp500, #gold, #crypto, #forex {
   border: 2px solid black;
   text-align: center;
 }
 
-#snp500 {
+#gold {
   grid-area: 1/1/2/2;
 }
 
-#gold {
+#snp500 {
   grid-area: 1/2/2/3;
 }
 
-#bitcoin {
+#crypto {
   grid-area: 2/1/3/2;
+}
+
+#forex {
+  grid-area: 2/2/3/3;
+}
+
+
+#crypto, #forex {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
+  font-weight: 500;
 }
 
 select {
@@ -50,4 +59,5 @@ select {
   align-items: center;
   grid-gap: 25px 10px;
   width: fit-content;
+  margin: 50px;
 }

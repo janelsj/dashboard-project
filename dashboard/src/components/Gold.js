@@ -1,4 +1,4 @@
-import API from './API';
+import API from '../common_functions/API';
 import React, {useEffect, useState} from 'react';
 import Plot from 'react-plotly.js';
 
