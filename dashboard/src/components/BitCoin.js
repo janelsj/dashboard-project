@@ -73,7 +73,7 @@ function BitCoin(){
     },[market, symbol]);
     
     return(<div id="bitcoin">
-        <h3>{'Digital \& Crypto Currency'}</h3>
+        <h3>{'Digital & Crypto Currency'}</h3>
         <div className="selection">
             <label htmlFor="physicalCurrency">Choose physical currency: </label>
             <select name="physicalCurrency" onChange={e => setMarket(e.target.options[e.target.selectedIndex].value)}></select>
