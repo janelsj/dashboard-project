@@ -73,7 +73,7 @@ function BitCoin(){
     },[market, symbol]);
     
     return(<div id="bitcoin">
-        <h3>{'Digital & Crypto Currency'}</h3>
+        <h2>{'Digital & Crypto Currency'}</h2>
         <div className="selection">
             <label htmlFor="physicalCurrency">Choose physical currency: </label>
             <select name="physicalCurrency" onChange={e => setMarket(e.target.options[e.target.selectedIndex].value)}></select>
@@ -90,7 +90,7 @@ function BitCoin(){
                 marker: {color: 'blue'},
               },
             ]}
-            layout={{width: 800, height: 600, title: `Daily Time Series of ${symbol.split(",")[1]} valuation (in ${market.split(",")[1]})`}}
+            layout={{width: 650, height: 600, title: `Daily Time Series of ${symbol.split(",")[1]} valuation (in ${market.split(",")[1]})`}}
           />
     </div>)
 }
