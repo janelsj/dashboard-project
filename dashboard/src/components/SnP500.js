@@ -54,8 +54,11 @@ class SnP500 extends React.Component {
     }
   
     render() {
-      return (
-        <div>
+      return (<>
+          <div className="div-header">
+            <h2>{'S&P 500'}</h2>
+          </div>
+          <div className="graph">
           <Plot
             data={[
               {
@@ -66,10 +69,10 @@ class SnP500 extends React.Component {
                 marker: {color: '#299617'},
               }
             ]}
-            layout={{width: 650, height: 600, title: `S&P 500<br><br> ${this.state.stockChartYValues[0]} USD`}}
+            layout={{width: 650, height: 600, title: `${this.state.stockChartYValues[0]} USD`}}
           />
         </div>
-      )
+      </>)
     }
   }
   

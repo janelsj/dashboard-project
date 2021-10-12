@@ -40,16 +40,18 @@ function Crypto(){
     },[market, symbol]);
     
     return(<div id="crypto">
-        <h2>{'Digital & Crypto Currency'}</h2>
-        <div className="selection">
-            <label htmlFor="physicalCurrency">Choose physical currency:</label>
-            <select name="physicalCurrency" value={market} onChange={e => setMarket(e.target.options[e.target.selectedIndex].value)}>
-                <DropdownListMaker filePathName='physical'/>
-            </select>
-            <label htmlFor="digitalCurrency">Choose digital currency:</label>
-            <select name="digitalCurrency" value={symbol} onChange={e => setSymbol(e.target.options[e.target.selectedIndex].value)}>
-                <DropdownListMaker filePathName='digital'/>
-            </select> 
+        <div className="div-header">
+            <h2>{'Digital & Crypto Currency'}</h2>
+            <div className="selection">
+                <label htmlFor="physicalCurrency">Choose physical currency:</label>
+                <select name="physicalCurrency" value={market} onChange={e => setMarket(e.target.options[e.target.selectedIndex].value)}>
+                    <DropdownListMaker filePathName='physical'/>
+                </select>
+                <label htmlFor="digitalCurrency">Choose digital currency:</label>
+                <select name="digitalCurrency" value={symbol} onChange={e => setSymbol(e.target.options[e.target.selectedIndex].value)}>
+                    <DropdownListMaker filePathName='digital'/>
+                </select> 
+            </div>
         </div>
         <Graph 
              x={graphValues.xAxis}

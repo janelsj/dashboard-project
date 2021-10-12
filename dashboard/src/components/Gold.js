@@ -46,9 +46,10 @@ function Gold() {
     console.log(yValuesFunction);
 
     return(<>
-        <div>
-            <h1>Gold Price</h1>
-
+          <div className="div-header">
+            <h2>Gold Price</h2>
+          </div>
+          <div className="graph">
             <Plot
             data={[
             {

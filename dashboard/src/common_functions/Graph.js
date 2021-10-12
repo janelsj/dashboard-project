@@ -1,7 +1,7 @@
 import Plot from 'react-plotly.js';
 
 function Graph({x, y, color, chartTitle}){
-    return(<>
+    return(<div className="graph">
         <Plot
             data={[
               {
@@ -12,9 +12,9 @@ function Graph({x, y, color, chartTitle}){
                 marker: {color: color},
               },
             ]}
-            layout={{width: 650, height: 600, title: chartTitle}}
+            layout={{width: 600, height: 550, title: chartTitle}}
           />
-    </>)
+    </div>)
 }
 
 export default Graph;

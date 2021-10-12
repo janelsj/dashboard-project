@@ -36,16 +36,18 @@ function Forex(){
     },[fromSymbol, toSymbol]);
     
     return(<div id="forex">
-        <h2>{'Forex: Currency Exchange Rates'}</h2>
-        <div className="selection">
-            <label htmlFor="fromCurrency">From:</label>
-            <select name="fromCurrency" value={fromSymbol} onChange={e => setFromSymbol(e.target.options[e.target.selectedIndex].value)}>
-                <DropdownListMaker filePathName='physical'/>
-            </select>
-            <label htmlFor="toCurrency">To:</label>
-            <select name="toCurrency" value={toSymbol} onChange={e => setToSymbol(e.target.options[e.target.selectedIndex].value)}>
-                <DropdownListMaker filePathName='physical'/>
-            </select> 
+        <div className="div-header">
+            <h2>{'Forex: Currency Exchange Rates'}</h2>
+            <div className="selection">
+                <label htmlFor="fromCurrency">From:</label>
+                <select name="fromCurrency" value={fromSymbol} onChange={e => setFromSymbol(e.target.options[e.target.selectedIndex].value)}>
+                    <DropdownListMaker filePathName='physical'/>
+                </select>
+                <label htmlFor="toCurrency">To:</label>
+                <select name="toCurrency" value={toSymbol} onChange={e => setToSymbol(e.target.options[e.target.selectedIndex].value)}>
+                    <DropdownListMaker filePathName='physical'/>
+                </select> 
+            </div>
         </div>
         <Graph 
             x={graphValues.xAxis}

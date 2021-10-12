@@ -4,6 +4,12 @@
   min-height: min-content;
   justify-content: center;
   align-items: center;
+  background-color: cornsilk;
+}
+
+h1 {
+  font-size: 3rem;
+  margin: 70px 0px;
 }
 
 #parent {
@@ -13,9 +19,11 @@
   justify-content: center;
   grid-gap: 35px 35px;
   width: 90%;
+  margin-bottom: 35px;
 }
 
 #snp500, #gold, #crypto, #forex {
+  border-radius: 35px;
   border: 2px solid black;
   text-align: center;
 }
@@ -36,8 +44,7 @@
   grid-area: 2/2/3/3;
 }
 
-
-#crypto, #forex {
+#crypto, #forex, .div-header {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -48,6 +55,8 @@
 
 select {
   font-size: 1.1rem;
+  background-color: cornsilk;
+  border-radius: 10px;
   width: 250px;
 }
 
@@ -59,5 +68,18 @@ select {
   align-items: center;
   grid-gap: 25px 10px;
   width: fit-content;
-  margin: 50px;
+  margin-bottom: 50px;
+}
+
+.div-header {
+  color: white;
+  border-radius: 35px 35px 0px 0px;
+  width: 100%;
+  background-color: #112244;
+}
+
+.graph {
+  border-radius: 0px 0px 35px 35px;
+  width: 100%;
+  background-color: white;
 }
