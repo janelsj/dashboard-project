@@ -33,7 +33,7 @@ function Gold() {
               for (let key in response.data['Weekly Time Series']){
                     if (moment(key).isSameOrAfter('2019-W01-1')) {
                       xValuesFunction.push(key);
-                      yValuesFunction.push(response.data['Weekly Time Series'][key]['1. open']);
+                      yValuesFunction.push(response.data['Weekly Time Series'][key]['4. close']);
                     }
               }
             //   console.log(xValuesFunction);
