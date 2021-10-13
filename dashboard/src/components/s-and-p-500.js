@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import API from '../common_functions/API';
+import API from '../common_functions/api';
 import Graph from '../common_functions/Graph';
 import moment from 'moment';
 
