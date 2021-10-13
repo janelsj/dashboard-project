@@ -2,6 +2,7 @@ import API from '../common_functions/API';
 import React from 'react';
 import Plot from 'react-plotly.js';
 
+
 // function SnP500(){
 //     return(<>
 //         Content for SnP500
