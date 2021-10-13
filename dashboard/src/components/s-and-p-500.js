@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import API from '../common_functions/API';
+import API from '../common_functions/api';
 import Plot from 'react-plotly.js';
 
 function SnP500(){
