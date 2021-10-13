@@ -25,7 +25,7 @@ function Gold() {
           .then(function (response)
           {
             //   console.log(response);
-              console.log(response.data);
+              // console.log(response.data);
 
               let xValuesFunction = [];
               let yValuesFunction = [];
@@ -45,8 +45,8 @@ function Gold() {
 
     }, []);
 
-    console.log(xValuesFunction);
-    console.log(yValuesFunction);
+    // console.log(xValuesFunction);
+    // console.log(yValuesFunction);
 
     return(<>
         <div>
