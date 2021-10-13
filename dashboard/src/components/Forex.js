@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react';
-import Graph from '../common_functions/Graph';
-import API from '../common_functions/API';
-import DropdownListMaker from '../common_functions/DropdownListMaker';
+import Graph from '../common_functions/graph';
+import API from '../common_functions/api';
+import DropdownListMaker from '../common_functions/dropdown-list-maker';
 
 function Forex(){
 
@@ -29,13 +29,14 @@ function Forex(){
                 yValuesArray.push(response.data['Time Series FX (Daily)'][eachDate]['4. close']);
             }
             setGraphValues({xAxis: xValuesArray, yAxis: yValuesArray});
+            // console.log("getting forex data");
         });
-
+        
         return () => console.log("exit Forex");
 
     },[fromSymbol, toSymbol]);
     
-    return(<div id="forex">
+    return(<>
         <div className="div-header">
             <h2>{'Forex: Currency Exchange Rates'}</h2>
             <div className="selection">
@@ -55,7 +56,7 @@ function Forex(){
             color={'royalBlue'}
             chartTitle={`Forex Daily Prices of ${fromSymbol.split(",")[1]} (in ${toSymbol.split(",")[1]})`}
         />
-    </div>)
+    </>)
 }
 
 export default Forex;

@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react';
-import Graph from '../common_functions/Graph';
-import API from '../common_functions/API';
-import DropdownListMaker from '../common_functions/DropdownListMaker';
+import Graph from '../common_functions/graph';
+import API from '../common_functions/api';
+import DropdownListMaker from '../common_functions/dropdown-list-maker';
 
 function Crypto(){
 
@@ -9,7 +9,7 @@ function Crypto(){
         xAxis: [],
         yAxis: [],
     });
-    const [market, setMarket] = useState('SGD,Singapore Dollar');
+    const [market, setMarket] = useState('USD,United States Dollar');
     const [symbol, setSymbol] = useState('BTC,Bitcoin');
 
     async function getCryptoData() {
@@ -31,15 +31,16 @@ function Crypto(){
                     xValuesArray.push(eachDate);
                     yValuesArray.push(response.data['Time Series (Digital Currency Daily)'][eachDate][`4a. close (${market.split(",")[0]})`]);
                 }
-                setGraphValues({xAxis: xValuesArray.slice(0,146), yAxis: yValuesArray.slice(0,146)});
+                setGraphValues({xAxis: xValuesArray, yAxis: yValuesArray});
+                // console.log("getting crypto data");
             }
         });
-
+        
         return () => console.log("exit Crypto");
 
     },[market, symbol]);
     
-    return(<div id="crypto">
+    return(<>
         <div className="div-header">
             <h2>{'Digital & Crypto Currency'}</h2>
             <div className="selection">
@@ -59,7 +60,7 @@ function Crypto(){
             color={'blue'}
             chartTitle={`Daily Time Series of ${symbol.split(",")[1]} valuation (in ${market.split(",")[1]})`}
         />
-    </div>)
+    </>)
 }
 
 export default Crypto;
