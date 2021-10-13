@@ -1,4 +1,4 @@
-import API from './API';
+import API from '../common_functions/API';
 import React, {useEffect, useState} from 'react';
 import Plot from 'react-plotly.js';
 import moment from 'moment';
@@ -49,9 +49,10 @@ function Gold() {
     // console.log(yValuesFunction);
 
     return(<>
-        <div>
-            <h1>Gold Price</h1>
-
+          <div className="div-header">
+            <h2>Gold Price</h2>
+          </div>
+          <div className="graph">
             <Plot
             data={[
             {
