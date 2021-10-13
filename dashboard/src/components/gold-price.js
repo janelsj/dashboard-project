@@ -54,14 +54,12 @@ function Gold() {
             <h2>Gold Price</h2>
             <h4>Latest Closing Price : {parseFloat(yValuesFunction[0]).toFixed(2)} USD <br/> Last Retrieved On : {xValuesFunction[0]}</h4>
           </div>
-          <div className="graph">
             <Graph 
               x={xValuesFunction}
               y={yValuesFunction}
               color='#d4af37'
               chartTitle="Weekly Time Series of Gold (in USD)"
-            />  
-        </div>
+            />
     </>)
 }
 

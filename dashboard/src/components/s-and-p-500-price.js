@@ -41,14 +41,12 @@ async function getSnP500Data() {
         <h2>S&P 500 Price</h2>
         <h4>Latest Closing Price : {Math.round(yAxis[0] * 100) / 100} USD <br/> Last Retrieved On : {xAxis[0]}</h4>
       </div>
-        <div className="graph">
         <Graph 
              x={xAxis}
              y={yAxis}
             color='#299617'
             chartTitle={"Weekly Time Series of S&P 500 (in USD)"}
-        />        
-        </div>
+        />
     </>)
 }
 
