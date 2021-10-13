@@ -1,6 +1,7 @@
 import API from './API';
 import React, {useEffect, useState} from 'react';
 import Plot from 'react-plotly.js';
+import moment from 'moment';
 
 //  fetchGold() {
 //     API.get( '/owner')
@@ -30,8 +31,10 @@ function Gold() {
               let yValuesFunction = [];
 
               for (let key in response.data['Weekly Time Series']){
-                  xValuesFunction.push(key);
-                  yValuesFunction.push(response.data['Weekly Time Series'][key]['1. open']);
+                    if (moment(key).isSameOrAfter('2019-W01-1')) {
+                      xValuesFunction.push(key);
+                      yValuesFunction.push(response.data['Weekly Time Series'][key]['1. open']);
+                    }
               }
             //   console.log(xValuesFunction);
             //   console.log(yValuesFunction);
