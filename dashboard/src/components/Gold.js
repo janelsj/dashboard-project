@@ -1,6 +1,7 @@
-import API from '../common_functions/API';
+import API from '../common_functions/api';
 import React, {useEffect, useState} from 'react';
 import Plot from 'react-plotly.js';
+import moment from 'moment';
 
 //  fetchGold() {
 //     API.get( '/owner')
@@ -15,23 +16,25 @@ function Gold() {
     useEffect (()=> {
         API.get('', {
             params: {
-                function: 'TIME_SERIES_DAILY_ADJUSTED',
+                function: 'TIME_SERIES_WEEKLY',
                 symbol: 'GLD',
                 datatype: 'json',
-                output_size: 'compact'
+                // output_size: 'compact'
               },
           })
           .then(function (response)
           {
             //   console.log(response);
-            //   console.log(response.data);
+              // console.log(response.data);
 
               let xValuesFunction = [];
               let yValuesFunction = [];
 
-              for (let key in response.data['Time Series (Daily)']){
-                  xValuesFunction.push(key);
-                  yValuesFunction.push(response.data['Time Series (Daily)'][key]['1. open']);
+              for (let key in response.data['Weekly Time Series']){
+                    if (moment(key).isSameOrAfter('2019-W01-1')) {
+                      xValuesFunction.push(key);
+                      yValuesFunction.push(response.data['Weekly Time Series'][key]['1. open']);
+                    }
               }
             //   console.log(xValuesFunction);
             //   console.log(yValuesFunction);
@@ -42,8 +45,8 @@ function Gold() {
 
     }, []);
 
-    console.log(xValuesFunction);
-    console.log(yValuesFunction);
+    // console.log(xValuesFunction);
+    // console.log(yValuesFunction);
 
     return(<>
           <div className="div-header">

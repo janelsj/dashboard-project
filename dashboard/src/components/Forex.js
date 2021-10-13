@@ -43,7 +43,7 @@ function Forex(){
 
     },[fromSymbol, toSymbol]);
     
-    return(<div id="forex">
+    return(<>
         <div className="div-header">
             <h2>Forex: Currency Exchange Rates</h2>
             <div className="selection">
@@ -64,7 +64,7 @@ function Forex(){
             color={'royalBlue'}
             chartTitle={`Forex Weekly Prices of ${fromSymbol.split(",")[1]} (in ${toSymbol.split(",")[1]})`}
         />
-    </div>)
+    </>)
 }
 
 export default Forex;
