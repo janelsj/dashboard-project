@@ -30,7 +30,7 @@ async function getSnP500Data() {
         setXAxis(xValuesArray);
         setYAxis(yValuesArray);
     });
-},[xAxis, yAxis]);
+},[]);
     
     return(
       <div>
