@@ -14,7 +14,8 @@ function Crypto(){
 
     async function getCryptoData() {
         return await API.get('', {
-            params: {market: market.split(",")[0], symbol: symbol.split(",")[0], function: 'DIGITAL_CURRENCY_DAILY'}
+            headers: {'x-rapidapi-key': '2cc4f9fb5fmsh6c7c17f151bdaa1p1f3fb7jsne9ae56177c97'},
+            params: {market: market.split(",")[0], symbol: symbol.split(",")[0], function: 'DIGITAL_CURRENCY_WEEKLY'}
         });
     }
 
@@ -26,10 +27,10 @@ function Crypto(){
             if (response.data["Error Message"]) {
                 alert("Invalid selection. Please select another cryptocurrency.")
             } else {
-                for (let eachDate in response.data['Time Series (Digital Currency Daily)']){
-                    // console.log(response.data['Time Series (Digital Currency Daily)'][eachDate][`4a. close (${market.split(",")[0]})`]);
+                for (let eachDate in response.data['Time Series (Digital Currency Weekly)']){
+                    // console.log(response.data['Time Series (Digital Currency Weekly)'][eachDate][`4a. close (${market.split(",")[0]})`]);
                     xValuesArray.push(eachDate);
-                    yValuesArray.push(response.data['Time Series (Digital Currency Daily)'][eachDate][`4a. close (${market.split(",")[0]})`]);
+                    yValuesArray.push(response.data['Time Series (Digital Currency Weekly)'][eachDate][`4a. close (${market.split(",")[0]})`]);
                 }
                 setGraphValues({xAxis: xValuesArray, yAxis: yValuesArray});
                 // console.log("getting crypto data");
@@ -53,12 +54,13 @@ function Crypto(){
                     <DropdownListMaker filePathName='digital'/>
                 </select> 
             </div>
+            <h4>Latest Closing Price of {symbol.split(",")[0]} : {parseFloat(graphValues.yAxis[0]).toFixed(2)} {market.split(",")[0]} <br/> Last Retrieved On : {graphValues.xAxis[0]}</h4>
         </div>
         <Graph 
              x={graphValues.xAxis}
              y={graphValues.yAxis}
             color={'blue'}
-            chartTitle={`Daily Time Series of ${symbol.split(",")[1]} valuation (in ${market.split(",")[1]})`}
+            chartTitle={`Weekly Time Series of ${symbol.split(",")[1]} valuation (in ${market.split(",")[1]})`}
         />
     </>)
 }
