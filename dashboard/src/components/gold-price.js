@@ -1,6 +1,6 @@
 import API from '../common_functions/api';
 import React, {useEffect, useState} from 'react';
-import Plot from 'react-plotly.js';
+import Graph from '../common_functions/graph';
 import moment from 'moment';
 
 //  fetchGold() {
@@ -15,6 +15,7 @@ function Gold() {
 
     useEffect (()=> {
         API.get('', {
+            headers: {'x-rapidapi-key': '956f29f902mshec9c7d274d0cce0p1074e5jsnc6ab53dcf3ad'}, //Hansen key
             params: {
                 function: 'TIME_SERIES_WEEKLY',
                 symbol: 'GLD',
@@ -33,7 +34,7 @@ function Gold() {
               for (let key in response.data['Weekly Time Series']){
                     if (moment(key).isSameOrAfter('2019-W01-1')) {
                       xValuesFunction.push(key);
-                      yValuesFunction.push(response.data['Weekly Time Series'][key]['1. open']);
+                      yValuesFunction.push(response.data['Weekly Time Series'][key]['4. close']);
                     }
               }
             //   console.log(xValuesFunction);
@@ -51,21 +52,15 @@ function Gold() {
     return(<>
           <div className="div-header">
             <h2>Gold Price</h2>
+            <h4>Latest Closing Price : {parseFloat(yValuesFunction[0]).toFixed(2)} USD <br/> Last Retrieved On : {xValuesFunction[0]}</h4>
           </div>
           <div className="graph">
-            <Plot
-            data={[
-            {
-            x: xValuesFunction,
-            y: yValuesFunction,
-            type: 'scatter',
-            mode: 'lines',
-            marker: {color: '#d4af37'},
-            },
-        ]}
-        layout={ {width: 650, height: 600, title: 'Plot of Gold'} }
-      />
-    
+            <Graph 
+              x={xValuesFunction}
+              y={yValuesFunction}
+              color='#d4af37'
+              chartTitle="Weekly Time Series of Gold (in USD)"
+            />  
         </div>
     </>)
 }

@@ -12,7 +12,7 @@ function Graph({x, y, color, chartTitle}){
                 marker: {color: color},
               },
             ]}
-            layout={{width: 600, height: 550, title: chartTitle}}
+            layout={{width: 700, height: 550, title: chartTitle}}
           />
     </div>)
 }

@@ -59,8 +59,8 @@ function Crypto(){
         <Graph 
              x={graphValues.xAxis}
              y={graphValues.yAxis}
-            color={'blue'}
-            chartTitle={`Weekly Time Series of ${symbol.split(",")[1]} valuation (in ${market.split(",")[1]})`}
+            color='blue'
+            chartTitle={`Weekly Time Series of ${symbol.split(",")[1]} valuation (in ${market.split(",")[0]})`}
         />
     </>)
 }

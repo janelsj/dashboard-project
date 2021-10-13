@@ -56,13 +56,13 @@ function Forex(){
                     <DropdownListMaker filePathName='physical'/>
                 </select>
             </div>
-            <h4>Latest Closing Price : {parseFloat(graphValues.yAxis[0]).toFixed(3)} {fromSymbol.split(",")[0]} / {toSymbol.split(",")[0]} <br/> Last Retrieved On : {graphValues.xAxis[0]}</h4>
+            <h4>Latest Closing Price : {parseFloat(graphValues.yAxis[0]).toFixed(3)} ({fromSymbol.split(",")[0]} / {toSymbol.split(",")[0]}) <br/> Last Retrieved On : {graphValues.xAxis[0]}</h4>
         </div>
         <Graph 
             x={graphValues.xAxis}
             y={graphValues.yAxis}
-            color={'royalBlue'}
-            chartTitle={`Forex Weekly Prices of ${fromSymbol.split(",")[1]} (in ${toSymbol.split(",")[1]})`}
+            color='red'
+            chartTitle={`Forex Weekly Prices of ${fromSymbol.split(",")[1]} (in ${toSymbol.split(",")[0]})`}
         />
     </>)
 }

@@ -1,6 +1,6 @@
 import React from 'react';
-import Gold from '../components/gold';
-import SnP500 from '../components/s-and-p-500';
+import Gold from '../components/gold-price';
+import SnP500 from '../components/s-and-p-500-price';
 import Crypto from '../components/digital-and-cryptocurrency';
 import Forex from '../components/forex';
 

@@ -45,7 +45,7 @@ h1 {
   grid-area: 2/2/3/3;
 }
 
-#crypto, #forex, .div-header {
+#snp500, #gold, #crypto, #forex, .div-header {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -81,6 +81,8 @@ select {
 .graph {
   border-radius: 0px 0px 35px 35px;
   width: 100%;
+  height: 100%;
+  padding-bottom: 20px;
   background-color: white;
 }
 
