@@ -65,7 +65,7 @@ function Forex(){
                 </select>
             </div>
             <h4>Latest Closing Price : {graphValues.yAxis[0]==='' ? ''
-                    : parseFloat(graphValues.yAxis[0]).toFixed(3)} ({fromSymbol.split(",")[0]} / {toSymbol.split(",")[0]}) <br/> 
+                    : parseFloat(graphValues.yAxis[0]).toFixed(4)} ({fromSymbol.split(",")[0]} / {toSymbol.split(",")[0]}) <br/> 
                 Last Retrieved On : {moment(graphValues.xAxis[0]).format('Do MMMM YYYY')}</h4>
         </div>
         <Graph 
