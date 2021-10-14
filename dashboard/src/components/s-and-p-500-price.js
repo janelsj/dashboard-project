@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from 'react';
-import API from '../common_functions/axios';
-import Graph from '../common_functions/graphing';
+import {useState, useEffect} from 'react';
+import API from '../common_functions/api';
+import Graph from '../common_functions/graph';
 import moment from 'moment';
 
 function SnP500(){

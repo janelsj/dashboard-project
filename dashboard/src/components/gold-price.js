@@ -1,6 +1,6 @@
-import API from '../common_functions/axios';
-import React, {useEffect, useState} from 'react';
-import Graph from '../common_functions/graphing';
+import API from '../common_functions/api';
+import {useEffect, useState} from 'react';
+import Graph from '../common_functions/graph';
 import moment from 'moment';
 
 //  fetchGold() {

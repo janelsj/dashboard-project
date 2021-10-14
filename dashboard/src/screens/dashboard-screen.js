@@ -2,7 +2,7 @@ import React from 'react';
 import Gold from '../components/gold-price';
 import SnP500 from '../components/s-and-p-500-price';
 import Crypto from '../components/digital-and-cryptocurrency';
-import Forex from '../components/currency-exchange';
+import Forex from '../components/forex';
 
 class DashboardScreen extends React.Component {
     constructor(){

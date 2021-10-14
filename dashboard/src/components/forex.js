@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react';
-import Graph from '../common_functions/graphing';
-import API from '../common_functions/axios';
+import Graph from '../common_functions/graph';
+import API from '../common_functions/api';
 import DropdownListMaker from '../common_functions/dropdown-list-maker';
 import moment from 'moment';
 
