@@ -12,6 +12,7 @@ function Forex(){
     });
     const [fromSymbol, setFromSymbol] = useState('USD,United States Dollar');
     const [toSymbol, setToSymbol] = useState('SGD,Singapore Dollar');
+    const [isAPILoaded, setIsAPILoaded] = useState(false);
 
     async function getForexData() {
         const forexData = await API.get('', {
@@ -37,7 +38,7 @@ function Forex(){
                     }
                 }
                 setGraphValues({xAxis: xValuesArray, yAxis: yValuesArray});
-                // console.log("getting forex data");
+                setIsAPILoaded(true);
             });
         }
         return () => console.log("exit Forex");
@@ -64,6 +65,7 @@ function Forex(){
             y={graphValues.yAxis}
             color='red'
             chartTitle={`Forex Weekly Prices of ${fromSymbol.split(",")[1]} (in ${toSymbol.split(",")[0]})`}
+            isLoaded={isAPILoaded}
         />
     </>)
 }

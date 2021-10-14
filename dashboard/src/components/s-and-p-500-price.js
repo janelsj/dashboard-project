@@ -6,6 +6,7 @@ import moment from 'moment';
 function SnP500(){
   const [xAxis, setXAxis] = useState([]);
   const [yAxis, setYAxis] = useState([]);
+  const [isAPILoaded, setIsAPILoaded] = useState(false);
 
 async function getSnP500Data() {
   const snp500Data = await API.get('', {
@@ -33,6 +34,7 @@ async function getSnP500Data() {
         }
         setXAxis(xValuesArray);
         setYAxis(yValuesArray);
+        setIsAPILoaded(true);
     });
 }, []);
     
@@ -46,6 +48,7 @@ async function getSnP500Data() {
              y={yAxis}
             color='#299617'
             chartTitle={"Weekly Time Series of S&P 500 (in USD)"}
+            isLoaded={isAPILoaded}
         />
     </>)
 }

@@ -12,6 +12,7 @@ function Crypto(){
     });
     const [market, setMarket] = useState('USD,United States Dollar');
     const [symbol, setSymbol] = useState('BTC,Bitcoin');
+    const [isAPILoaded, setIsAPILoaded] = useState(false);
 
     async function getCryptoData() {
         const cryptoData = await API.get('', {
@@ -35,7 +36,7 @@ function Crypto(){
                     yValuesArray.push(response.data['Time Series (Digital Currency Weekly)'][eachDate][`4a. close (${market.split(",")[0]})`]);
                 }
                 setGraphValues({xAxis: xValuesArray, yAxis: yValuesArray});
-                // console.log("getting crypto data");
+                setIsAPILoaded(true);
             }
         });
         
@@ -63,6 +64,7 @@ function Crypto(){
              y={graphValues.yAxis}
             color='blue'
             chartTitle={`Weekly Time Series of ${symbol.split(",")[1]} valuation (in ${market.split(",")[0]})`}
+            isLoaded={isAPILoaded}
         />
     </>)
 }
