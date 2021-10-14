@@ -23,25 +23,31 @@ function Forex(){
     }
 
     useEffect(()=>{
-    /* Get values for Graph from API*/
         let xValuesArray = [];
         let yValuesArray = [];
-        if (toSymbol===fromSymbol) {
-            alert ('Invalid selection. Please choose another currency pair.');
-        } else {
-            getForexData().then(response => {
+        /* Get values for Graph from API*/
+        getForexData().then(response => {
+            if (toSymbol===fromSymbol || response.data["Error Message"]) {
+                setIsAPILoaded(false);
+                alert ('Invalid selection. Please choose another currency pair.');
+                xValuesArray = [''];
+                yValuesArray=[''];
+                setGraphValues({xAxis: xValuesArray, yAxis: yValuesArray});
+                setTimeout(()=>{document.querySelector("select[name='fromCurrency']").focus()},1);
+            } else {
                 for (let eachDate in response.data['Time Series FX (Weekly)']){
                     if (moment(eachDate).isSameOrAfter('2019-W01-1')){
                         // console.log(response.data['Time Series FX (Weekly)'][eachDate]['4. close']);
                         xValuesArray.push(eachDate);
                         yValuesArray.push(response.data['Time Series FX (Weekly)'][eachDate]['4. close']);
                     }
-                }
+                };
                 setGraphValues({xAxis: xValuesArray, yAxis: yValuesArray});
                 setIsAPILoaded(true);
-            });
-        }
-        return () => console.log("exit Forex");
+            }
+        });
+        
+        return () => setIsAPILoaded(false);
 
     },[fromSymbol, toSymbol]);
     
@@ -58,7 +64,9 @@ function Forex(){
                     <DropdownListMaker filePathName='physical'/>
                 </select>
             </div>
-            <h4>Latest Closing Price : {parseFloat(graphValues.yAxis[0]).toFixed(3)} ({fromSymbol.split(",")[0]} / {toSymbol.split(",")[0]}) <br/> Last Retrieved On : {moment(graphValues.xAxis[0]).format('Do MMMM YYYY')}</h4>
+            <h4>Latest Closing Price : {graphValues.yAxis[0]==='' ? ''
+                    : parseFloat(graphValues.yAxis[0]).toFixed(3)} ({fromSymbol.split(",")[0]} / {toSymbol.split(",")[0]}) <br/> 
+                Last Retrieved On : {moment(graphValues.xAxis[0]).format('Do MMMM YYYY')}</h4>
         </div>
         <Graph 
             x={graphValues.xAxis}
