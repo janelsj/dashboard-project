@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/dashboard-project/static/css/main.724fc4f5.chunk.css",
-    "main.js": "/dashboard-project/static/js/main.99fcfe65.chunk.js",
-    "main.js.map": "/dashboard-project/static/js/main.99fcfe65.chunk.js.map",
+    "main.css": "/dashboard-project/static/css/main.4cd82ca0.chunk.css",
+    "main.js": "/dashboard-project/static/js/main.a4a438b4.chunk.js",
+    "main.js.map": "/dashboard-project/static/js/main.a4a438b4.chunk.js.map",
     "runtime-main.js": "/dashboard-project/static/js/runtime-main.b35739cd.js",
     "runtime-main.js.map": "/dashboard-project/static/js/runtime-main.b35739cd.js.map",
     "static/js/2.743e3e68.chunk.js": "/dashboard-project/static/js/2.743e3e68.chunk.js",
@@ -10,14 +10,14 @@
     "static/js/3.3c0c5ff9.chunk.js": "/dashboard-project/static/js/3.3c0c5ff9.chunk.js",
     "static/js/3.3c0c5ff9.chunk.js.map": "/dashboard-project/static/js/3.3c0c5ff9.chunk.js.map",
     "index.html": "/dashboard-project/index.html",
-    "static/css/main.724fc4f5.chunk.css.map": "/dashboard-project/static/css/main.724fc4f5.chunk.css.map",
+    "static/css/main.4cd82ca0.chunk.css.map": "/dashboard-project/static/css/main.4cd82ca0.chunk.css.map",
     "static/js/2.743e3e68.chunk.js.LICENSE.txt": "/dashboard-project/static/js/2.743e3e68.chunk.js.LICENSE.txt",
     "static/media/App.css": "/dashboard-project/static/media/coolblue.a69d51e7.bin"
   },
   "entrypoints": [
     "static/js/runtime-main.b35739cd.js",
     "static/js/2.743e3e68.chunk.js",
-    "static/css/main.724fc4f5.chunk.css",
-    "static/js/main.99fcfe65.chunk.js"
+    "static/css/main.4cd82ca0.chunk.css",
+    "static/js/main.a4a438b4.chunk.js"
   ]
 }
