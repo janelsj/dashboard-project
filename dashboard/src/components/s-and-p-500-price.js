@@ -39,7 +39,7 @@ async function getSnP500Data() {
     return(<>
       <div className="div-header">
         <h2>S&P 500 Price</h2>
-        <h4>Latest Closing Price : {Math.round(yAxis[0] * 100) / 100} USD <br/> Last Retrieved On : {xAxis[0]}</h4>
+        <h4>Latest Closing Price : {Math.round(yAxis[0] * 100) / 100} USD <br/> Last Retrieved On : {moment(xAxis[0]).format('DD-MM-YYYY')}</h4>
       </div>
         <Graph 
              x={xAxis}
