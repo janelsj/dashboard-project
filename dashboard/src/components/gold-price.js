@@ -1,6 +1,6 @@
-import API from '../common_functions/api';
+import API from '../common_functions/axios';
 import React, {useEffect, useState} from 'react';
-import Graph from '../common_functions/graph';
+import Graph from '../common_functions/graphing';
 import moment from 'moment';
 
 //  fetchGold() {
@@ -52,7 +52,7 @@ function Gold() {
     return(<>
           <div className="div-header">
             <h2>Gold Price</h2>
-            <h4>Latest Closing Price : {parseFloat(yValuesFunction[0]).toFixed(2)} USD <br/> Last Retrieved On : {xValuesFunction[0]}</h4>
+            <h4>Latest Closing Price : {parseFloat(yValuesFunction[0]).toFixed(2)} USD <br/> Last Retrieved On : {moment(xValuesFunction[0]).format('Do MMMM YYYY')}</h4>
           </div>
             <Graph 
               x={xValuesFunction}

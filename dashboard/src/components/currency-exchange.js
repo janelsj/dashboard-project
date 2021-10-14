@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react';
-import Graph from '../common_functions/graph';
-import API from '../common_functions/api';
+import Graph from '../common_functions/graphing';
+import API from '../common_functions/axios';
 import DropdownListMaker from '../common_functions/dropdown-list-maker';
 import moment from 'moment';
 
@@ -14,10 +14,11 @@ function Forex(){
     const [toSymbol, setToSymbol] = useState('SGD,Singapore Dollar');
 
     async function getForexData() {
-        return await API.get('', {
+        const forexData = await API.get('', {
             headers: {'x-rapidapi-key': '2cc4f9fb5fmsh6c7c17f151bdaa1p1f3fb7jsne9ae56177c97'},
             params: {from_symbol: fromSymbol.split(",")[0], to_symbol: toSymbol.split(",")[0], function: 'FX_WEEKLY'}
         });
+        return forexData;
     }
 
     useEffect(()=>{
@@ -56,7 +57,7 @@ function Forex(){
                     <DropdownListMaker filePathName='physical'/>
                 </select>
             </div>
-            <h4>Latest Closing Price : {parseFloat(graphValues.yAxis[0]).toFixed(3)} ({fromSymbol.split(",")[0]} / {toSymbol.split(",")[0]}) <br/> Last Retrieved On : {graphValues.xAxis[0]}</h4>
+            <h4>Latest Closing Price : {parseFloat(graphValues.yAxis[0]).toFixed(3)} ({fromSymbol.split(",")[0]} / {toSymbol.split(",")[0]}) <br/> Last Retrieved On : {moment(graphValues.xAxis[0]).format('Do MMMM YYYY')}</h4>
         </div>
         <Graph 
             x={graphValues.xAxis}

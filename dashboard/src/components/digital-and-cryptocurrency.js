@@ -1,7 +1,8 @@
 import {useState, useEffect} from 'react';
-import Graph from '../common_functions/graph';
-import API from '../common_functions/api';
+import Graph from '../common_functions/graphing';
+import API from '../common_functions/axios';
 import DropdownListMaker from '../common_functions/dropdown-list-maker';
+import moment from 'moment';
 
 function Crypto(){
 
@@ -13,10 +14,11 @@ function Crypto(){
     const [symbol, setSymbol] = useState('BTC,Bitcoin');
 
     async function getCryptoData() {
-        return await API.get('', {
-            headers: {'x-rapidapi-key': '2cc4f9fb5fmsh6c7c17f151bdaa1p1f3fb7jsne9ae56177c97'},
+        const cryptoData = await API.get('', {
+            headers: {'x-rapidapi-key': 'a57be0c007msh6f8ae509f4788bap1cd588jsn08ecd04d7136'},
             params: {market: market.split(",")[0], symbol: symbol.split(",")[0], function: 'DIGITAL_CURRENCY_WEEKLY'}
         });
+        return cryptoData;
     }
 
     useEffect(()=>{
@@ -54,7 +56,7 @@ function Crypto(){
                     <DropdownListMaker filePathName='digital'/>
                 </select> 
             </div>
-            <h4>Latest Closing Price of {symbol.split(",")[0]} : {parseFloat(graphValues.yAxis[0]).toFixed(2)} {market.split(",")[0]} <br/> Last Retrieved On : {graphValues.xAxis[0]}</h4>
+            <h4>Latest Closing Price of {symbol.split(",")[0]} : {parseFloat(graphValues.yAxis[0]).toFixed(2)} {market.split(",")[0]} <br/> Last Retrieved On : {moment(graphValues.xAxis[0]).format('Do MMMM YYYY')}</h4>
         </div>
         <Graph 
              x={graphValues.xAxis}
