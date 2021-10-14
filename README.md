@@ -11,7 +11,7 @@
     - Moment (documentation: [https://momentjs.com/](https://momentjs.com/))
     - Plotly (documentation: [https://plotly.com/javascript/](https://plotly.com/javascript/))
     - Papaparse (documentation: [https://www.papaparse.com/docs](https://www.papaparse.com/docs))
-    - React-spinners (documentation: [https://www.npmjs.com/package/react-spinners] (https://www.npmjs.com/package/react-spinners))
+    - React-spinners (documentation: [https://www.npmjs.com/package/react-spinners](https://www.npmjs.com/package/react-spinners))
 1. Web deployment to GitHub Pages
 
 
@@ -19,6 +19,6 @@
 Source code from this repository has been deployed to [https://janelsj.github.io/dashboard-project/](https://janelsj.github.io/dashboard-project/).
 
 ## Collaborators:
-- [Leow0069] (https://github.com/Leow0069)
-- [dingyu15] (https://github.com/dingyu15)
-- [janelsj] (https://github.com/janelsj)
+- [Leow0069](https://github.com/Leow0069)
+- [dingyu15](https://github.com/dingyu15)
+- [janelsj](https://github.com/janelsj)
