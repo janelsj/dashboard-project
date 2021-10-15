@@ -5,10 +5,6 @@ import Crypto from '../components/digital-and-cryptocurrency';
 import Forex from '../components/forex';
 
 class DashboardScreen extends React.Component {
-    constructor(){
-        super();
-    }
-
     render() {
         return(<div id="parent">
             <div id="gold"><Gold/></div>
@@ -17,7 +13,6 @@ class DashboardScreen extends React.Component {
             <div id="forex"><Forex/></div>
         </div>)
     }
-
 }
 
 export default DashboardScreen;

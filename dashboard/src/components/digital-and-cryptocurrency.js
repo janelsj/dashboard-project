@@ -12,6 +12,7 @@ function Crypto(){
     });
     const [market, setMarket] = useState('USD,United States Dollar');
     const [symbol, setSymbol] = useState('BTC,Bitcoin');
+    const [isAPILoaded, setIsAPILoaded] = useState(false);
 
     async function getCryptoData() {
         const cryptoData = await API.get('', {
@@ -22,12 +23,17 @@ function Crypto(){
     }
 
     useEffect(()=>{
-    /* Get values for Graph from API*/
         let xValuesArray = [];
         let yValuesArray = [];
+        /* Get values for Graph from API*/
         getCryptoData().then(response => {
             if (response.data["Error Message"]) {
-                alert("Invalid selection. Please select another cryptocurrency.")
+                setIsAPILoaded(false);
+                alert("Invalid selection. Please select another cryptocurrency.");
+                xValuesArray = [''];
+                yValuesArray=[''];
+                setGraphValues({xAxis: xValuesArray, yAxis: yValuesArray});
+                setTimeout(()=>{document.querySelector("select[name='physicalCurrency']").focus()},1);
             } else {
                 for (let eachDate in response.data['Time Series (Digital Currency Weekly)']){
                     // console.log(response.data['Time Series (Digital Currency Weekly)'][eachDate][`4a. close (${market.split(",")[0]})`]);
@@ -35,11 +41,11 @@ function Crypto(){
                     yValuesArray.push(response.data['Time Series (Digital Currency Weekly)'][eachDate][`4a. close (${market.split(",")[0]})`]);
                 }
                 setGraphValues({xAxis: xValuesArray, yAxis: yValuesArray});
-                // console.log("getting crypto data");
+                setIsAPILoaded(true);
             }
         });
         
-        return () => console.log("exit Crypto");
+        return () => setIsAPILoaded(false);
 
     },[market, symbol]);
     
@@ -56,13 +62,16 @@ function Crypto(){
                     <DropdownListMaker filePathName='digital'/>
                 </select> 
             </div>
-            <h4>Latest Closing Price of {symbol.split(",")[0]} : {parseFloat(graphValues.yAxis[0]).toFixed(2)} {market.split(",")[0]} <br/> Last Retrieved On : {moment(graphValues.xAxis[0]).format('Do MMMM YYYY')}</h4>
+            <h4>Latest Closing Price of {symbol.split(",")[0]} : {graphValues.yAxis[0]==='' ? ''
+                    : parseFloat(graphValues.yAxis[0]).toFixed(2)} {market.split(",")[0]} <br/>
+                Last Retrieved On : {moment(graphValues.xAxis[0]).format('Do MMMM YYYY')}</h4>
         </div>
         <Graph 
              x={graphValues.xAxis}
              y={graphValues.yAxis}
             color='blue'
             chartTitle={`Weekly Time Series of ${symbol.split(",")[1]} valuation (in ${market.split(",")[0]})`}
+            isLoaded={isAPILoaded}
         />
     </>)
 }

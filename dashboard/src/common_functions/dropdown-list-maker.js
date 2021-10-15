@@ -21,7 +21,7 @@ function DropdownListMaker({filePathName}) {
             }
         });
 
-        return () => console.log("exit dropdownListMaker");
+        return () => setList([]);
     }, [])
     
     return(<>

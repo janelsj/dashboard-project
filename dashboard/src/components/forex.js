@@ -12,6 +12,7 @@ function Forex(){
     });
     const [fromSymbol, setFromSymbol] = useState('USD,United States Dollar');
     const [toSymbol, setToSymbol] = useState('SGD,Singapore Dollar');
+    const [isAPILoaded, setIsAPILoaded] = useState(false);
 
     async function getForexData() {
         const forexData = await API.get('', {
@@ -22,25 +23,31 @@ function Forex(){
     }
 
     useEffect(()=>{
-    /* Get values for Graph from API*/
         let xValuesArray = [];
         let yValuesArray = [];
-        if (toSymbol===fromSymbol) {
-            alert ('Invalid selection. Please choose another currency pair.');
-        } else {
-            getForexData().then(response => {
+        /* Get values for Graph from API*/
+        getForexData().then(response => {
+            if (toSymbol===fromSymbol || response.data["Error Message"]) {
+                setIsAPILoaded(false);
+                alert ('Invalid selection. Please choose another currency pair.');
+                xValuesArray = [''];
+                yValuesArray=[''];
+                setGraphValues({xAxis: xValuesArray, yAxis: yValuesArray});
+                setTimeout(()=>{document.querySelector("select[name='fromCurrency']").focus()},1);
+            } else {
                 for (let eachDate in response.data['Time Series FX (Weekly)']){
                     if (moment(eachDate).isSameOrAfter('2019-W01-1')){
                         // console.log(response.data['Time Series FX (Weekly)'][eachDate]['4. close']);
                         xValuesArray.push(eachDate);
                         yValuesArray.push(response.data['Time Series FX (Weekly)'][eachDate]['4. close']);
                     }
-                }
+                };
                 setGraphValues({xAxis: xValuesArray, yAxis: yValuesArray});
-                // console.log("getting forex data");
-            });
-        }
-        return () => console.log("exit Forex");
+                setIsAPILoaded(true);
+            }
+        });
+        
+        return () => setIsAPILoaded(false);
 
     },[fromSymbol, toSymbol]);
     
@@ -57,13 +64,16 @@ function Forex(){
                     <DropdownListMaker filePathName='physical'/>
                 </select>
             </div>
-            <h4>Latest Closing Price : {parseFloat(graphValues.yAxis[0]).toFixed(3)} ({fromSymbol.split(",")[0]} / {toSymbol.split(",")[0]}) <br/> Last Retrieved On : {moment(graphValues.xAxis[0]).format('Do MMMM YYYY')}</h4>
+            <h4>Latest Closing Price : {graphValues.yAxis[0]==='' ? ''
+                    : parseFloat(graphValues.yAxis[0]).toFixed(4)} ({fromSymbol.split(",")[0]} / {toSymbol.split(",")[0]}) <br/> 
+                Last Retrieved On : {moment(graphValues.xAxis[0]).format('Do MMMM YYYY')}</h4>
         </div>
         <Graph 
             x={graphValues.xAxis}
             y={graphValues.yAxis}
             color='red'
             chartTitle={`Forex Weekly Prices of ${fromSymbol.split(",")[1]} (in ${toSymbol.split(",")[0]})`}
+            isLoaded={isAPILoaded}
         />
     </>)
 }
