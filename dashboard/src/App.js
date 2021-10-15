@@ -3,7 +3,7 @@ import './App.css';
 
 function App() {
   return (<div className="App">
-    <h1>WallStreet Dashboard</h1>
+    <h1>Investor's Dashboard</h1>
     <DashboardScreen />
   </div>);
 }
