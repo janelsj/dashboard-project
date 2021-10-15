@@ -10,8 +10,9 @@ import moment from 'moment';
 // };
 
 function Gold() {
-    const [xValuesFunction, setXValuesFunction] = useState([])
-    const [yValuesFunction, setYValuesFunction] = useState([])
+    const [xValuesFunction, setXValuesFunction] = useState([]);
+    const [yValuesFunction, setYValuesFunction] = useState([]);
+    const [isAPILoaded, setIsAPILoaded] = useState(false);
 
     useEffect (()=> {
         API.get('', {
@@ -42,6 +43,7 @@ function Gold() {
 
               setXValuesFunction(xValuesFunction);
               setYValuesFunction(yValuesFunction);
+              setIsAPILoaded(true);
           })
 
     }, []);
@@ -59,6 +61,7 @@ function Gold() {
               y={yValuesFunction}
               color='#d4af37'
               chartTitle="Weekly Time Series of Gold (in USD)"
+              isLoaded={isAPILoaded}
             />
     </>)
 }
