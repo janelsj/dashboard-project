@@ -5,12 +5,17 @@
   min-width: min-content;
   justify-content: center;
   align-items: center;
-  background-image: url("./coolblue");
+  background-color: cornsilk;
+  background-image: url("./images/skyview.jpg");
+  background-size: cover;
 }
 
 h1 {
-  font-size: 3rem;
+  font-size: 4rem;
   margin: 70px 0px;
+  text-shadow: 10px 10px 15px whitesmoke;
+  font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+  padding: 30px 50px;
 }
 
 #parent {
